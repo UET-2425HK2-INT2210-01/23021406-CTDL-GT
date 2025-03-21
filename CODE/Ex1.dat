@@ -1,0 +1,22 @@
+1. Tính xác định (Deterministic Output)
+- Định nghĩa:
+    + Một hàm băm luôn cho ra cùng một giá trị băm nếu đầu vào không thay đổi.
+    + Nghĩa là nếu bạn nhập cùng một khóa (key), kết quả luôn giống nhau.
+2. Chống va chạm (Collision Resistance)
+- Định nghĩa:
+    + Một hàm băm tốt phải làm cho rất khó để tìm thấy hai giá trị khác nhau nhưng lại có cùng giá trị băm.
+    + Tuy nhiên, vì số lượng giá trị có thể băm là hữu hạn, nên va chạm (collision) chắc chắn xảy ra.
+    + Một hàm băm tốt sẽ giảm thiểu va chạm càng nhiều càng tốt.
+- Cách xử lý va chạm (Collision Handling):
+    + Separate Chaining (Xâu chuỗi riêng biệt):
+        Mỗi ô trong bảng băm lưu một danh sách liên kết chứa tất cả các phần tử có cùng giá trị băm.
+        Khi cần truy vấn, ta chỉ tìm trong danh sách liên kết thay vì toàn bộ bảng băm.
+
+    VD với các khóa 1001 và 1 có cùng giá trị băm 1, ta sẽ lưu như sau:
+        [1, 1001]
+    + Linear Probing (Tuyến tính)
+        Khi xảy ra va chạm, phần tử bị va chạm được lưu vào ô trống kế tiếp.
+
+    VD nếu vị trí 1 đã có 1, thì 1001 được đẩy vào vị trí tiếp theo, giả sử vị trí 2:
+    [1]
+    [1001]
