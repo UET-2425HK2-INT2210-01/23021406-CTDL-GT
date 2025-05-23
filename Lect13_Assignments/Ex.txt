@@ -1,0 +1,52 @@
+Ex1. <[^>]+>/
+Regex /<[^>]+>/ nghĩa là:
+    < là ký tự dấu nhỏ hơn mở đầu
+    [^>]+ là một hoặc nhiều ký tự khác dấu lớn hơn >
+    > là ký tự dấu lớn hơn đóng
+
+Nói cách khác, regex này khớp với đoạn văn bản bắt đầu bằng <, tiếp theo là một hoặc nhiều ký tự không phải >, rồi kết thúc bằng >
+
+Chọn 1)<an xml tag> vì:
+    Bắt đầu bằng < → thỏa mãn phần đầu
+    Phần giữa là an xml tag (các ký tự: a, n, (dấu cách), x, m, l, , t, a, g)
+    Quan trọng là trong phần giữa không có ký tự > nên thỏa mãn [^>]+
+    Kết thúc bằng > → thỏa mãn phần cuối
+
+Ex2. /a.[bc]+/
+Regex /a.[bc]+/ nghĩa là:
+    a : ký tự a cố định
+    . : một ký tự bất kỳ (trừ xuống dòng)
+    [bc]+ : một hoặc nhiều ký tự chỉ gồm b hoặc c
+
+Chọn 4) abcbcbcbc
+
+Ex3. 
+Regex /(very )+(fat )?(tall|ugly) man/ có nghĩa là: 
+    (very )+ : cụm từ "very " lặp lại ít nhất một lần (có thể là "very ", "very very ", "very very very "...)
+    (fat )? : cụm từ "fat " có thể có hoặc không (tùy chọn)
+    (tall|ugly) : hoặc "tall" hoặc "ugly" (bắt buộc một trong hai)
+    man : kết thúc bằng " man" (có khoảng trắng trước man)
+
+Chọn 3) very very fat ugly man
+     4) very very very tall man
+
+Ex4. 
+123.456.789.000
+fas.rtd.lgh
+
+Ex5.
+^\(?\d{3}\)?[-. ]?\d{3}[-. ]?\d{4}
+    B1: \(?\d{3}\)? là 3 chữ số, có thể có ngoặc hoặc không
+    B2: [-. ]? là dấu phân tách tùy chọn (-, . hoặc space)
+    B3: \d{3} là 3 chữ số tiếp theo
+    B4: Thêm phân tách nữa
+    B5: \d{4} là 4 chữ số cuối cùng
+
+Ex6.
+
+^(?!.*[-_ ]{2})[A-Za-z0-9]+([-_ ][A-Za-z0-9]+)*
+
+    B1: ^(?!.*[-_ ]{2}) dùng negative lookahead để chặn 2 dấu phân tách liền nhau
+    B2: [A-Za-z0-9]+ bắt đầu bằng ít nhất một chữ hoặc số
+    B3: ([-_ ][A-Za-z0-9]+)* cho phép có thêm nhóm: dấu phân tách + chữ/số
+    B4: Kết thúc bằng chữ hoặc số → không có dấu phân tách ở cuối
